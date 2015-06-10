@@ -18,6 +18,6 @@ $ git clone https://github.com/lpcruz/nightwatch.git
 ```
 Using Pip for dependencies
 
-$ pip install -r requirements.txt
+$ sudo pip install -r requirements.txt
 
 ```
