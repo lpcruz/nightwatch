@@ -7,9 +7,8 @@ from nightwatch_utils import driver_path
 #Start your test here...
 
 def googletest():
-    this = nightwatch_utils.driver(driver_path) #This should always be present
+    this = nightwatch_utils.driver(driver_path)
 
-    #start your commands here
     browser.getURL(this, 'http://www.google.com')
     browser.assertElementPresent(this, 'body')
     browser.clickClearAndType(this, '#lst-ib', 'automated testing')

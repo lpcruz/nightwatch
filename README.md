@@ -22,7 +22,7 @@ $ sudo pip install -r requirements.txt
 
 # Creating a Test
 
-* The [template folder](https://github.com/lpcruz/nightwatch/tree/master/template) is a good starting point as it contains each of the dependencies. The template folder is how your new project should look like when beginning. 
+* The [template folder](https://github.com/lpcruz/nightwatch/tree/master/template) is a good starting point as it contains each of the dependencies. The template folder is how your new project should look like when beginning.
 
 * Create a new folder/directory for your project within the Root Directory ```nightwatch```
 
@@ -35,7 +35,6 @@ $ sudo pip install -r requirements.txt
 * For reference, please review the template for making a test [here](https://github.com/lpcruz/nightwatch/blob/master/template/test_template.py)
 
 * You will need to make changes to nightwatch_utils and you can refer [here](https://github.com/lpcruz/nightwatch/blob/master/template/nightwatch_utils.py)
-
 
 * When you're done making your test, make sure that your new project folder contains updated versions of ```commands.py``` and ```nightwatch_utils.py```, as well as a ```screens``` directory
 
