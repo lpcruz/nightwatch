@@ -11,7 +11,7 @@ def googletest():
 
     #start your commands here
     browser.getURL(this, 'http://www.google.com')
-    browser.clickClearAndType(this, '#lst-i', 'automated testing')
+    browser.clickClearAndType(this, '#lst-ib', 'automated testing')
     browser.clickRetry(this,'.lsb[value="Search"]')
     browser.pause(5) # pause for 5 seconds
     browser.snapshot(this,'google-results.png')
