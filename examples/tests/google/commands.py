@@ -5,6 +5,13 @@ from nightwatch_utils import time, start_time
 import os
 import sys
 
+def assertElementPresent(driver, css_selector):
+    try:
+        driver.find_element_by_css_selector(css_selector)
+        print "✔    Element " + "<" + css_selector + ">" + " present after " + ("%s seconds" % (time.time() - start_time))
+
+    except:
+        print "X    Unable to locate " + css_selector
 
 def clickRetry (driver, css_selector):
     try:
@@ -30,7 +37,7 @@ def clickClearAndType (driver, css_selector, content):
         print "✔    Clicked on <" + css_selector + ">" + " and typed" + " '" + content + "' "
     except:
         print "X    Unable to locate <" + css_selector + ">" + "and unable to type " + " '" + content + "' "
-        driver.save_screenshot('screens/')
+        driver.save_screenshot('screens/clickClearAndType-fail.png')
 
     return (driver, css_selector, content)
 
@@ -48,9 +55,10 @@ def snapshot(driver, image_name):
 def getURL(driver, url):
     try:
         driver.get(url)
-        print "✔    Element <body> with the url of "+ url + " present after " + ("%s seconds" % (time.time() - start_time))
+        print "✔    Navigated to  "+ url + " after " + ("%s seconds" % (time.time() - start_time))
     except:
         print "X    Unable to load " + url + " after " + ("%s seconds" % (time.time() - start_time))
+        driver.save_screenshot('screens/getURL-fail.png')
 
     return (driver, url)
 
@@ -69,6 +77,7 @@ def quit (driver):
         print ""
         print "Done, without errors."
         print "Finished test in " + ("%s seconds" % (time.time() - start_time))
+
     except:
         print "X    Test Failed. See Errors in log."
 
