@@ -10,6 +10,7 @@ def googletest():
     this = nightwatch_utils.driver(driver_path)
 
     browser.getURL(this, 'http://www.google.com')
+    browser.refresh(this)
     browser.assertElementPresent(this, 'body')
     browser.clickClearAndType(this, '#lst-ib', 'automated testing')
     browser.clickRetry(this,'.lsb[value="Search"]')

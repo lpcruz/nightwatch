@@ -17,10 +17,10 @@ def clickRetry (driver, css_selector):
     try:
         driver.find_element_by_css_selector(css_selector).click()
         time.sleep(1) #pause 1 second
-        driver.find_element_by_css_selector(css_selector).click()
         print "✔    Clicked on <" + css_selector + ">"
     except:
 
+        driver.find_element_by_css_selector(css_selector).click()
         print "X    Unable to locate " + css_selector + " and took screenshot of failure"
         driver.save_screenshot('screens/clickretry-fail.png')
         driver.quit()
@@ -44,12 +44,13 @@ def clickClearAndType (driver, css_selector, content):
 
 def snapshot(driver, image_name):
     try:
+        time.sleep(5)
         driver.save_screenshot('screens/' + image_name);
         print "✔    Took screenshot after " + ("%s seconds" % (time.time() - start_time))
     except:
         print "X    Unable to take a screenshot"
 
-    return (driver, image_name)
+    return (time, driver, image_name)
 
 
 def getURL(driver, url):
@@ -70,6 +71,13 @@ def pause(seconds):
 
     return (time)
 
+def refresh(driver):
+    try:
+        driver.refresh()
+        time.sleep(1)
+        print "✔    Refreshed Browser at " + ("%s seconds" % (time.time() - start_time))
+    except:
+        print "X    Unable to Refresh"
 
 def quit (driver):
     try:
