@@ -12,10 +12,10 @@ import time
 import os
 import sys
 
-test_name = "Google Test"
+test_name = "Google Test Suite"
 
-print "Starting " + test_name
-print "======================"
+print "Running [" + test_name + "]"
+print "==========================="
 print ""
 
 driver_path='/Users/lcruz/Desktop/lcruz/Projects/nightwatch/chromedriver'
