@@ -91,7 +91,5 @@ def quit (driver):
 
     except:
         print colored("Test Failed. See Errors in log.","red")
-        print str(len(success)) + "assertions Passed"
-        print str(len(fail)) + "assertions Failed"
 
     return driver

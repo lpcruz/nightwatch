@@ -90,6 +90,6 @@ def quit (driver):
         print "Finished test in " + ("%s seconds" % (time.time() - start_time))
 
     except:
-        print colored("X    Test Failed. See Errors in log.","red")
+        print colored("Test Failed. See Errors in log.","red")
 
     return driver
