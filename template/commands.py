@@ -8,9 +8,10 @@ from termcolor import colored
 success = colored("✔   ","green")
 fail = colored("X   ","red")
 
-def assertElementPresent(driver, css_selector):
+def waitForElementPresent(driver, css_selector,seconds):
     try:
         driver.find_element_by_css_selector(css_selector)
+        driver.implicitly_wait(seconds)
         print success + "Element " + "<" + css_selector + ">" + " present after " + ("%s seconds" % (time.time() - start_time))
 
     except:
@@ -20,6 +21,7 @@ def clickRetry (driver, css_selector):
     try:
         driver.find_element_by_css_selector(css_selector).click()
         time.sleep(1) #pause 1 second
+        driver.implicitly_wait(20)
         print success + "Clicked on <" + css_selector + ">"
     except:
 
@@ -30,17 +32,27 @@ def clickRetry (driver, css_selector):
 
     return (driver, css_selector)
 
+def clickAndType(driver,css_selector,content):
+    try:
+        driver.implicitly_wait(20)
+        driver.find_element_by_css_selector(css_selector).click()
+        driver.find_element_by_css_selector(css_selector).send_keys(content)
+    except:
+        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + " '" + content + "' "
+        driver.save_screenshot('screens/clickAndType-fail.png')
 
+    return (driver, css_selector, content)
 
 def clickClearAndType (driver, css_selector, content):
     try:
+        driver.implicitly_wait(20)
         driver.find_element_by_css_selector(css_selector).click()
         driver.find_element_by_css_selector(css_selector).clear()
         driver.find_element_by_css_selector(css_selector).send_keys(content)
         print success + "Clicked on <" + css_selector + ">" + " and typed" + " '" + content + "' "
     except:
         print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + " '" + content + "' "
-        driver.save_screenshot('screens/clickClearAndType-fail.png')
+        driver.save_screenshot('/screens/clickClearAndType-fail.png')
 
     return (driver, css_selector, content)
 
@@ -48,8 +60,9 @@ def clickClearAndType (driver, css_selector, content):
 def snapshot(driver, image_name):
     try:
         time.sleep(5)
-        driver.save_screenshot('screens/' + image_name);
-        print success + "Recorded screenshot " + "'" + image_name + "'" + " after " + ("%s seconds" % (time.time() - start_time))
+        driver.implicitly_wait(20)
+        driver.save_screenshot('screens/' + image_name + '.png')
+        print success + "Recorded screenshot " + "'" + image_name + '.png' + "'" + " after " + ("%s seconds" % (time.time() - start_time))
     except:
         print fail + "Unable to take a screenshot"
 
@@ -91,5 +104,7 @@ def quit (driver):
 
     except:
         print colored("Test Failed. See Errors in log.","red")
+        print str(len(success)) + "assertions Passed"
+        print str(len(fail)) + "assertions Failed"
 
     return driver
