@@ -22,7 +22,7 @@ print "Runnning " + test_name
 print "======================"
 print ""
 
-driver_path='absolute path here ' #driver_path should be changed to the absolute path that leads to the browser of your choice. In this case, we are using chrome. e.g. /Users/yourname/Desktop/nightwatch/chromedriver
+driver_path= os.getcwd() + '/chromedriver'
 start_time = time.time()
 
 def driver(driver_path):
