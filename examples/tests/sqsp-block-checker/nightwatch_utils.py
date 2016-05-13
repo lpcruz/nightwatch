@@ -18,7 +18,7 @@ print "Running [" + test_name + "]"
 print "==================================="
 print ""
 
-driver_path='/Users/lcruz/Desktop/lcruz/Projects/nightwatch/chromedriver'
+driver_path= os.getcwd() + '/chromedriver'
 start_time = time.time()
 
 def driver(driver_path):
