@@ -8,6 +8,15 @@ from termcolor import colored
 success = colored("✔   ","green")
 fail = colored("X   ","red")
 
+
+def findAllElements(driver, selector):
+    driver.find_elements_by_css_selector(selector)
+
+    amount_of_selectors = len(driver.find_elements_by_css_selector(selector))
+
+    print success + "Found " + str(amount_of_selectors) + " elements with " + selector
+    return driver, selector
+
 def switchFrame(driver,frame):
     driver.switch_to_frame(driver.find_element_by_tag_name(frame))
     print success + "Switched frame to " + frame
