@@ -8,6 +8,12 @@ from termcolor import colored
 success = colored("✔   ","green")
 fail = colored("X   ","red")
 
+def switchFrame(driver,frame):
+    driver.switch_to_frame(driver.find_element_by_tag_name(frame))
+    print success + "Switched frame to " + frame
+
+    return driver, frame
+
 def setBrowserSize(driver,length,width):
     driver.set_window_size(length,width)
 

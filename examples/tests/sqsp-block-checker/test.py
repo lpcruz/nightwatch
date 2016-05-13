@@ -6,6 +6,9 @@ def test(): # Similar to JavaScript, I'm creating a function that executes the c
 
     #specify the site url, email and password
     sqsp_utils.login()
+
+    sqsp.goToPages()
+    sqsp.checkPageForBlock()
     sqsp.end()
 
 test()
