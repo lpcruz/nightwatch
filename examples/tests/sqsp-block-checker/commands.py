@@ -23,6 +23,18 @@ def switchFrame(driver,frame):
 
     return driver, frame
 
+def getAll(driver, selector):
+    try:
+        driver.find_element_by_css_selector(selector)
+        driver.execute_script("document.querySelectorAll('" + selector + "')")
+        print success + "Found all <" + selector + ">" + " at " + ("%s seconds" % (time.time() - start_time)) + " using js fallback"
+        print str(selector)
+    except:
+        driver.execute_script("document.querySelectorAll('" + selector + "')")
+        print fail + "Unable to find elements using js fallback"
+
+    return (driver, selector)
+
 def setBrowserSize(driver,length,width):
     driver.set_window_size(length,width)
 
@@ -58,7 +70,7 @@ def clickAndType(driver,css_selector,content):
         driver.find_element_by_css_selector(css_selector).click()
         driver.find_element_by_css_selector(css_selector).send_keys(content)
     except:
-        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + " '" + content + "' "
+        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + "
         driver.save_screenshot('screens/clickAndType-fail.png')
 
     return (driver, css_selector, content)
@@ -69,9 +81,9 @@ def clickClearAndType (driver, css_selector, content):
         driver.find_element_by_css_selector(css_selector).click()
         driver.find_element_by_css_selector(css_selector).clear()
         driver.find_element_by_css_selector(css_selector).send_keys(content)
-        print success + "Clicked on <" + css_selector + ">" + " and typed" + " '" + content + "' "
+        print success + "Clicked on <" + css_selector + ">" + " and typed"
     except:
-        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + " '" + content + "' "
+        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type "
         driver.save_screenshot('/screens/clickClearAndType-fail.png')
 
     return (driver, css_selector, content)
