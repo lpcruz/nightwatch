@@ -70,7 +70,7 @@ def clickAndType(driver,css_selector,content):
         driver.find_element_by_css_selector(css_selector).click()
         driver.find_element_by_css_selector(css_selector).send_keys(content)
     except:
-        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type " + "
+        print fail + "Unable to locate <" + css_selector + ">" + "and unable to type "
         driver.save_screenshot('screens/clickAndType-fail.png')
 
     return (driver, css_selector, content)
